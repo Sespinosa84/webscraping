@@ -4,5 +4,10 @@ from bs4 import BeautifulSoup
 res = requests.get('https://news.ycombinator.com/news')
 soup = BeautifulSoup(res.text, 'html.parser')
 
-print(soup.find_all('div'))
+links = soup.select('.storylink') # grap the links
+votes = soup.select('.score') #grap the votes 
+
+
+
+
   
