@@ -13,7 +13,11 @@ def create_custom_hn(links, votes):
 		title = links[idx].getText()
 		#hn.append(title)
 		href = links[idx].get('href', None)
+		score = int(votes[idx].getText().replace(' points', ''))
+		print(score)
 		hn.append({'title', title,'link', href})
+
+
 
 	return hn 
 
