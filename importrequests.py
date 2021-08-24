@@ -8,6 +8,9 @@ soup = BeautifulSoup(res.text, 'html.parser')
 links = soup.select('.storylink') # grap the links
 subtext = soup.select('.subtext') #grap the votes 
 
+def sort_stories_by_votes(hnlist):
+	return sorted(hnlist, key = lambda k:k['votes'], reverse=True)
+
 def create_custom_hn(links, subtext):
 	hn = []
 	for idx, item in enumerate(links):
@@ -20,7 +23,7 @@ def create_custom_hn(links, subtext):
 			if score > 99:
 				hn.append({'title': title, 'link': href, 'votes': score})
 
-	return hn 
+	return sort_stories_by_votes(hn) 
 
 
 pprint.pprint(create_custom_hn(links, subtext))
